@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Montclair State University Tutoring Form</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+        
+        <!-- Link to Hawk Logo Favicon -->
+        <link rel="icon" href="{{ url_for('static', filename='hawk-logo-color.svg') }}" type="image/svg+xml">
+
+        <script>
+            // JavaScript to hide the message after 10 seconds
+            window.onload = function() {
+                const successMessage = document.getElementById('success-message');
+                if (successMessage) {
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 10000); // 10 seconds
+                }
+            }
+        </script>
+    </head>
+    
+<body>
+    <div class="container">
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <img src="{{ url_for('static', filename='montclair-logo-red.svg') }}" alt="Montclair State University" class="montclair-logo">
+            <img src="{{ url_for('static', filename='hawk-logo-color.svg') }}" alt="Montclair Hawk Logo" class="hawk-logo">
+        </div>
+
+        <!-- Display success message if available -->
+        {% if message %}
+        <div id="success-message" class="success-message">
+            {{ message }}
+        </div>
+        {% endif %}
+
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>Montclair State University Tutoring Form</h2>
+            <form method="POST" action="/submit">
+                <input type="text" name="name" placeholder="Name" required><br>
+                <input type="text" name="semester" placeholder="Semester" required><br>
+                <input type="text" name="major" placeholder="Major" required><br>
+                <input type="text" name="netid" placeholder="NetID" required><br>
+                <input type="email" name="email" placeholder="Email" required><br>  <!-- Email input added -->
+                <input type="text" name="purpose" placeholder="Purpose of Visit" required><br>
+                <input type="submit" value="Submit">
+            </form>                      
+        </div>
+
+        <!-- Admin Login Button -->
+        <div class="admin-login-section">
+            <form action="/admin">
+                <button type="submit" class="admin-login-btn">Admin Login</button>
+            </form>
+        </div>
+    </div> <!-- Closing the main container -->
+</body>
+</html>

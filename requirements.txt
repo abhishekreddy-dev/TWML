@@ -1,0 +1,8 @@
+# Flask for the web framework
+pip install Flask
+
+# pandas for handling the Excel file
+pip install pandas
+
+# openpyxl for Excel file support
+pip install openpyxl

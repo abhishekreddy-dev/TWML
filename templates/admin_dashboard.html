@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Link to Hawk Logo Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='hawk-logo-color.svg') }}" type="image/svg+xml">
+    
+    <!-- Include external CSS and jQuery -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery for AJAX -->
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Welcome, Admin!</h2>
+
+        <!-- Form to filter students by date -->
+        <div class="filter-section">
+            <h3>Filter Students by Date</h3>
+            <form id="filter-form" method="POST">
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date" name="start_date">
+                <label for="end-date">End Date:</label>
+                <input type="date" id="end-date" name="end_date">
+                <button type="button" id="filter-btn">Filter</button> <!-- Changed to button for JS -->
+            </form>
+        </div>
+
+        <!-- Table to display students -->
+        <div class="table-section">
+            <h3>All Students</h3>
+            <table id="students-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Semester</th>
+                        <th>Major</th>
+                        <th>NetID</th>
+                        <th>Email</th>
+                        <th>Purpose of Visit</th>
+                        <th>Submission Date & Time</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="students-table-body">  <!-- Added id here -->
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ student[0] }}</td> <!-- Database ID -->
+                        <td>{{ student[1] }}</td> <!-- Name -->
+                        <td>{{ student[2] }}</td> <!-- Semester -->
+                        <td>{{ student[3] }}</td> <!-- Major -->
+                        <td>{{ student[4] }}</td> <!-- NetID -->
+                        <td>{{ student[5] }}</td> <!-- Email -->
+                        <td>{{ student[6] }}</td> <!-- Purpose -->
+                        <td>{{ student[7] }}</td> <!-- Timestamp (Submission Date & Time) -->
+                        <td>
+                            <form action="/admin/delete/{{ student[0] }}" method="POST" style="display:inline;">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Add Student Button (Redirects to another page) -->
+        <div class="add-student-button">
+            <button onclick="window.location.href='/admin/add'">Add Student</button>
+        </div>
+
+        <!-- Download section -->
+        <div class="download-section">
+            <h3>Download Data</h3>
+            <form action="/admin/download">
+                <button type="submit">Download Data as Excel</button>
+            </form>
+        </div>
+
+        <!-- Logout section -->
+        <div class="logout-section">
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <!-- JavaScript to handle AJAX filtering -->
+    <script>
+        $(document).ready(function() {
+            $('#filter-btn').on('click', function() {
+                // Get the start and end date values
+                const startDate = $('#start-date').val();
+                const endDate = $('#end-date').val();
+
+                // Make AJAX request
+                $.ajax({
+                    type: 'POST',
+                    url: '/admin/filter_data',
+                    data: {
+                        start_date: startDate,
+                        end_date: endDate
+                    },
+                    success: function(response) {
+                        // Clear the existing table body
+                        $('#students-table-body').empty();
+
+                        // Append the new filtered rows
+                        if (response.length > 0) {
+                            response.forEach(function(student) {
+                                const row = `
+                                    <tr>
+                                        <td>${student[0]}</td>
+                                        <td>${student[1]}</td>
+                                        <td>${student[2]}</td>
+                                        <td>${student[3]}</td>
+                                        <td>${student[4]}</td>
+                                        <td>${student[5]}</td>
+                                        <td>${student[6]}</td>
+                                        <td>${student[7]}</td>
+                                        <td>
+                                            <form action="/admin/delete/${student[0]}" method="POST" style="display:inline;">
+                                                <button type="submit" class="delete-btn">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                `;
+                                $('#students-table-body').append(row);
+                            });
+                        } else {
+                            $('#students-table-body').append('<tr><td colspan="9">No students found.</td></tr>');
+                        }
+                    }
+                });
+            });
+        });
+    </script>    
+</body>
+</html>

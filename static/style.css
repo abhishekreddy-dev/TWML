@@ -1,0 +1,350 @@
+/* General page styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensures the body takes up full viewport height */
+    font-size: 16px; /* Global font size */
+    line-height: 1.6; /* Improved readability */
+}
+
+/* Main container to center all content */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    gap: 20px; /* Space between logos, form, and buttons */
+}
+
+/* Logo section */
+.logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px; /* Add space below logos */
+}
+
+.montclair-logo {
+    width: 250px;
+    max-width: 100%; /* Prevents overflow on small screens */
+}
+
+.hawk-logo {
+    width: 80px;
+    max-width: 100%; /* Prevents overflow */
+}
+
+/* Form section */
+.form-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow for modern look */
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border-top: 10px solid #C8102E; /* Montclair Red */
+    margin-bottom: 20px; /* Add space below form */
+}
+
+/* Consolidated input styles for text, email, password, etc. */
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form input[type="submit"] {
+    width: calc(100% - 20px); /* Make input fields fill the form's width */
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Slightly increased border-radius for smoother look */
+    font-size: 16px;
+    box-sizing: border-box; /* Ensures proper sizing */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transition for focus state */
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="email"]:focus {
+    border-color: #C8102E; /* Montclair Red on focus */
+    box-shadow: 0 0 8px rgba(200, 16, 46, 0.2); /* Light red shadow */
+}
+
+/* Placeholder styling */
+::placeholder {
+    color: #999;
+    opacity: 1; /* Ensures full opacity */
+}
+
+form input[type="submit"] {
+    background-color: #C8102E; /* Montclair Red */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%; /* Ensure submit button fills the width */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for button */
+}
+
+form input[type="submit"]:hover {
+    background-color: #9E0D26; /* Darker Montclair Red on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+form input[type="submit"]:focus {
+    outline: 3px solid #C8102E; /* Focus outline for accessibility */
+}
+
+/* Admin Login button styling */
+.admin-login-section {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.admin-login-btn {
+    background-color: #4D4D4F; /* Montclair Gray */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px; /* Smoother border-radius */
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Button shadow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-login-btn:hover {
+    background-color: #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Hover effect for button */
+}
+
+.admin-login-btn:focus {
+    outline: 3px solid #4D4D4F; /* Focus outline for accessibility */
+}
+
+/* Headings */
+h2 {
+    color: #4D4D4F; /* Montclair Gray */
+    font-weight: 600;
+    font-size: 26px; /* Slightly larger heading */
+    margin-bottom: 20px; /* Add space below heading */
+}
+
+/* Responsive design for small devices */
+@media (max-width: 600px) {
+    .logo-section {
+        margin-bottom: 20px;
+    }
+    
+    .montclair-logo {
+        width: 70%; /* Adjust the size for small screens */
+        max-width: 200px; /* Prevent the logo from being too large */
+    }
+    
+    .hawk-logo {
+        width: 40%; /* Adjust the size for small screens */
+        max-width: 120px;
+    }
+    
+    .form-section {
+        width: 95%; /* Form takes up almost full screen width on smaller devices */
+        padding: 20px; /* Reduce padding for small screens */
+    }
+    
+    form input[type="text"],
+    form input[type="password"],
+    form input[type="submit"] {
+        width: 100%; /* Ensure inputs and buttons are full width on small screens */
+    }
+    
+    .admin-login-btn {
+        width: 100%; /* Admin button full width on small screens */
+        padding: 12px;
+    }
+}
+
+/* --- Admin Dashboard CSS --- */
+
+/* Dashboard container */
+.dashboard-container {
+    max-width: 1000px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Table styling */
+.table-section {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Button styling */
+button {
+    background-color: #C8102E;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #9E0D26;
+}
+
+/* Form styling for the Add Student form */
+.add-student-section form input[type="text"],
+.add-student-section form input[type="date"] {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.add-student-section form button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.delete-btn {
+    background-color: #FF0000;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #C8102E;
+}
+
+/* Add Student Button */
+.add-student-button {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.add-student-button button {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-student-button button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Section titles */
+h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Logout link styling */
+.logout-section a {
+    display: inline-block;
+    margin-top: 20px;
+    color: white;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.logout-section a:hover {
+    background-color: #444;
+}
+
+/* Add Student Page Styling */
+.add-student-container {
+    max-width: 600px;
+    background-color: white;
+    padding: 30px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.add-student-container form input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.add-student-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+.add-student-container button:hover {
+    background-color: #45a049;
+}
+
+/* Back to Dashboard Button */
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    color: white;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    background-color: #444;
+}

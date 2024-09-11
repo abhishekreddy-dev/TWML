@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+     <!-- Link to Hawk Logo Favicon -->
+     <link rel="icon" href="{{ url_for('static', filename='hawk-logo-color.svg') }}" type="image/svg+xml">
+        
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="add-student-container">
+        <h2>Add New Student</h2>
+        <form method="POST" action="/admin/add_student">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="text" name="semester" placeholder="Semester" required>
+            <input type="text" name="major" placeholder="Major" required>
+            <input type="text" name="netid" placeholder="NetID" required>
+            <input type="email" name="email" placeholder="Email" required> <!-- This is important -->
+            <input type="text" name="purpose" placeholder="Purpose of Visit" required>
+            <input type="submit" value="Add Student">
+        </form>        
+        <br>
+        <a href="/admin" class="back-btn">Back to Dashboard</a>
+    </div>
+</body>
+</html>
